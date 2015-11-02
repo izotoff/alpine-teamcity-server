@@ -36,6 +36,7 @@ RUN echo "#!/bin/sh" > restore.sh && \
 	chmod a+x restore.sh
 
 WORKDIR /opt/TeamCity/bin
+RUN sed  -i 's/\.\/catalina\.sh /exec &/' teamcity-server.sh
 VOLUME  ["/data/teamcity"]
 EXPOSE 8111
 CMD ["/opt/TeamCity/bin/teamcity-server.sh", "run"]
